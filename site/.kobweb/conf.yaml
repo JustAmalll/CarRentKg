@@ -1,0 +1,19 @@
+site:
+  title: "ProRent"
+
+server:
+  files:
+    dev:
+      contentRoot: "build/processedResources/js/main/public"
+      script: "build/kotlin-webpack/js/developmentExecutable/rent.js"
+      api: "build/libs/rent.jar"
+    prod:
+      script: "build/kotlin-webpack/js/productionExecutable/rent.js"
+      siteRoot: ".kobweb/site"
+  logging:
+    level: ALL # ALL, TRACE, DEBUG, INFO, WARN, ERROR, OFF
+    enableConsoleLogging: true # If false, logs will not be written to stdout/stderr
+    enableFileLogging: true # If false, a log file will not be created
+    clearLogsOnStart: true # Warning - if true, wipes ALL files in logRoot, so don't put other files in there!
+
+  port: 8080
