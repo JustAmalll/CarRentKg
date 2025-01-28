@@ -51,7 +51,7 @@ fun BannerSection(onSelectCarClicked: () -> Unit) {
     ) {
         Image(
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .objectFit(ObjectFit.Cover),
             src = "/banner.jpg",
             alt = "Cover"

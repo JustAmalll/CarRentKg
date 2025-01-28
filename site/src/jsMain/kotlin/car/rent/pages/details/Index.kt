@@ -27,11 +27,13 @@ import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.minWidth
 import com.varabyte.kobweb.compose.ui.modifiers.objectFit
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.overflow
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.position
+import com.varabyte.kobweb.compose.ui.modifiers.rotate
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import com.varabyte.kobweb.compose.ui.thenIf
@@ -47,6 +49,7 @@ import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.Position
+import org.jetbrains.compose.web.css.deg
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Text
@@ -174,6 +177,18 @@ fun CarDetailsPopup(car: Car, onClosePopupClicked: () -> Unit) {
             CarDetailedImage(breakpoint = breakpoint, images = car.images)
             CarDetailsText(car = car)
         }
+        if (breakpoint < Breakpoint.MD) {
+            Image(
+                src = "/ic_plus.svg",
+                modifier = Modifier
+                    .size(20.px)
+                    .color(Color.white)
+                    .rotate(45.deg)
+                    .margin(all = 16.px)
+                    .onClick { onClosePopupClicked() }
+                    .align(Alignment.TopStart)
+            )
+        }
     }
 }
 
@@ -230,7 +245,11 @@ fun CarDetailedImage(
 
 @Composable
 fun CarDetailsText(car: Car) {
-    Column(modifier = Modifier.maxWidth(440.px)) {
+    Column(
+        modifier = Modifier
+            .maxWidth(440.px)
+            .minWidth(300.px)
+    ) {
         SpanText(
             modifier = Modifier
                 .fontSize(30.px)
