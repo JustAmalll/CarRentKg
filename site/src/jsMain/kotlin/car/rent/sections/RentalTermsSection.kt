@@ -72,7 +72,7 @@ fun RentalTermsSection() {
         )
         TermItem(
             text = "Сколько километров я могу проехать на автомобиле?",
-            description = ""
+            description = "У нас нет ограничений по километрам. Вы можете проезжать любое расстояние в зависимости от ваших потребностей и условий."
         )
         TermItem(
             text = "Что делать, если я получу штраф ПДД или нарушу скоростной режим?",
@@ -82,7 +82,6 @@ fun RentalTermsSection() {
             text = "Что делать если я попал в ДТП?",
             description = "Не покидайте место ДТП, необходимо сразу сообщить об этом Арендодателю."
         )
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -117,21 +116,20 @@ fun RentalTermsSection() {
 }
 
 @Composable
-private fun TermItem(
-    text: String,
-    description: String
-) {
+private fun TermItem(text: String, description: String) {
     val breakpoint = rememberBreakpoint()
     var expanded by remember { mutableStateOf(false) }
 
-    Column(
+    Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(topBottom = if (breakpoint >= Breakpoint.MD) 32.px else 16.px)
+            .padding(topBottom = if (breakpoint >= Breakpoint.MD) 26.px else 16.px)
             .cursor(Cursor.Pointer)
-            .onClick { expanded = !expanded }
+            .onClick { expanded = !expanded },
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+        Column(modifier = Modifier.fillMaxWidth()) {
             SpanText(
                 modifier = Modifier
                     .fontSize(if (breakpoint >= Breakpoint.MD) 30.px else 20.px)
@@ -140,32 +138,32 @@ private fun TermItem(
                     .margin(right = 16.px),
                 text = text
             )
-            Box(
-                modifier = DefaultButtonStyle
-                    .toModifier()
-                    .size(if (breakpoint >= Breakpoint.MD) 48.px else 30.px)
-                    .borderRadius(50.percent)
-                    .flexShrink(0)
-                    .onClick { expanded = !expanded },
-                contentAlignment = Alignment.Center
-            ) {
-                Image(
-                    src = "/ic_plus.svg",
+            if (expanded) {
+                SpanText(
                     modifier = Modifier
-                        .size(18.px)
+                        .margin(top = 12.px)
+                        .fontSize(if (breakpoint >= Breakpoint.MD) 18.px else 12.px)
                         .color(Color.white)
-                        .rotate(if (expanded) 45.deg else 0.deg)
+                        .fontWeight(FontWeight.Light),
+                    text = description
                 )
             }
         }
-        if (expanded) {
-            SpanText(
+        Box(
+            modifier = DefaultButtonStyle
+                .toModifier()
+                .size(if (breakpoint >= Breakpoint.MD) 48.px else 30.px)
+                .borderRadius(50.percent)
+                .flexShrink(0)
+                .onClick { expanded = !expanded },
+            contentAlignment = Alignment.Center
+        ) {
+            Image(
+                src = "/ic_plus.svg",
                 modifier = Modifier
-                    .margin(top = 12.px)
-                    .fontSize(if (breakpoint >= Breakpoint.MD) 18.px else 12.px)
+                    .size(18.px)
                     .color(Color.white)
-                    .fontWeight(FontWeight.Light),
-                text = description
+                    .rotate(if (expanded) 45.deg else 0.deg)
             )
         }
     }

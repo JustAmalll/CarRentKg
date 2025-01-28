@@ -53,7 +53,7 @@ fun BannerSection(onSelectCarClicked: () -> Unit) {
             modifier = Modifier
                 .fillMaxWidth()
                 .objectFit(ObjectFit.Cover),
-            src = "/banner.png",
+            src = "/banner.jpg",
             alt = "Cover"
         )
         Box(
@@ -85,8 +85,20 @@ fun BannerSection(onSelectCarClicked: () -> Unit) {
                     "Лидеры аренды автомобилей в Бишкеке"
                 },
                 modifier = Modifier
-                    .fontSize(if (breakpoint >= Breakpoint.MD) 90.px else 30.px)
-                    .lineHeight(if (breakpoint >= Breakpoint.MD) 94.px else 36.px)
+                    .fontSize(
+                        when {
+                            breakpoint > Breakpoint.MD -> 90.px
+                            breakpoint == Breakpoint.MD -> 60.px
+                            else -> 30.px
+                        }
+                    )
+                    .lineHeight(
+                        when {
+                            breakpoint > Breakpoint.MD -> 94.px
+                            breakpoint == Breakpoint.MD -> 68.px
+                            else -> 36.px
+                        }
+                    )
                     .fontWeight(FontWeight.Medium)
                     .color(Color.white)
                     .whiteSpace(WhiteSpace.PreWrap)
@@ -105,9 +117,27 @@ fun BannerSection(onSelectCarClicked: () -> Unit) {
                     "Аренда автомобиля за 15\nминут — быстро, удобно, надежно."
                 },
                 modifier = Modifier
-                    .margin(top = 42.px)
-                    .fontSize(if (breakpoint >= Breakpoint.MD) 30.px else 14.px)
-                    .lineHeight(if (breakpoint >= Breakpoint.MD) 40.px else 20.px)
+                    .margin(
+                        top = when {
+                            breakpoint > Breakpoint.MD -> 42.px
+                            breakpoint == Breakpoint.MD -> 30.px
+                            else -> 24.px
+                        }
+                    )
+                    .fontSize(
+                        when {
+                            breakpoint > Breakpoint.MD -> 30.px
+                            breakpoint == Breakpoint.MD -> 20.px
+                            else -> 14.px
+                        }
+                    )
+                    .lineHeight(
+                        when {
+                            breakpoint > Breakpoint.MD -> 40.px
+                            breakpoint == Breakpoint.MD -> 30.px
+                            else -> 20.px
+                        }
+                    )
                     .letterSpacing(2.px)
                     .color(Color.white)
                     .whiteSpace(WhiteSpace.PreWrap)
@@ -122,10 +152,22 @@ fun BannerSection(onSelectCarClicked: () -> Unit) {
             Box(
                 modifier = DefaultButtonStyle
                     .toModifier()
-                    .margin(top = 32.px)
+                    .margin(
+                        top = when {
+                            breakpoint > Breakpoint.MD -> 42.px
+                            breakpoint == Breakpoint.MD -> 30.px
+                            else -> 24.px
+                        }
+                    )
                     .padding(leftRight = 5.percent, topBottom = 1.5.percent)
                     .fontWeight(FontWeight.Bold)
-                    .fontSize(if (breakpoint >= Breakpoint.MD) 30.px else 16.px)
+                    .fontSize(
+                        when {
+                            breakpoint > Breakpoint.MD -> 22.px
+                            breakpoint == Breakpoint.MD -> 18.px
+                            else -> 14.px
+                        }
+                    )
                     .borderRadius(r = 80.px)
                     .onClick { onSelectCarClicked() },
                 contentAlignment = Alignment.Center

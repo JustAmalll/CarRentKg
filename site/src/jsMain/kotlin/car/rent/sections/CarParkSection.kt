@@ -179,7 +179,13 @@ fun RowScope.CarClass(
         SpanText(
             text = text,
             modifier = Modifier
-                .fontSize(if (breakpoint >= Breakpoint.MD) 18.px else 14.px)
+                .fontSize(
+                    when {
+                        breakpoint > Breakpoint.MD -> 18.px
+                        breakpoint == Breakpoint.MD -> 16.px
+                        else -> 12.px
+                    }
+                )
                 .margin(bottom = 16.px)
                 .fontWeight(
                     if (selected) {

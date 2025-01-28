@@ -29,6 +29,8 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import kotlinx.browser.window
+import net.thauvin.erik.urlencoder.UrlEncoderUtil
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
@@ -59,7 +61,7 @@ fun ContactsSection() {
                 .textDecorationLine(TextDecorationLine.None),
             path = "tel:$PHONE_NUMBER"
         )
-        SpanText(
+        Link(
             text = "info@rentacar.kg",
             modifier = Modifier
                 .margin(top = 4.px)
@@ -67,6 +69,8 @@ fun ContactsSection() {
                 .lineHeight(if (breakpoint >= Breakpoint.MD) 90.px else 32.px)
                 .color(Color.white)
                 .fontWeight(FontWeight.Medium)
+                .textDecorationLine(TextDecorationLine.None),
+            path = "mailto:info@rentacar.kg?subject=${UrlEncoderUtil.encode("Я хочу узнать насчет аренды машины.")}"
         )
         SpanText(
             text = "Кыргызстан, г.Бишкек, пр.Мира 123, здание 1, офис 4",
@@ -81,10 +85,10 @@ fun ContactsSection() {
             modifier = DefaultButtonStyle
                 .toModifier()
                 .align(Alignment.CenterHorizontally)
-                .margin(top = 100.px)
+                .margin(top = if (breakpoint >= Breakpoint.MD) 100.px else 60.px)
                 .padding(leftRight = 8.percent, topBottom = 2.percent)
                 .borderRadius(r = 80.px)
-                .onClick {},
+                .onClick { window.location.href = "tel:$PHONE_NUMBER" },
             contentAlignment = Alignment.Center
         ) {
             SpanText(

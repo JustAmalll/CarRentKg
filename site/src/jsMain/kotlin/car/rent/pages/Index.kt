@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import car.rent.models.Constants.PHONE_NUMBER
 import car.rent.models.Section
 import car.rent.pages.details.Car
 import car.rent.pages.details.CarDetailsPopup
@@ -37,6 +38,8 @@ import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import kotlinx.browser.window
+import net.thauvin.erik.urlencoder.UrlEncoderUtil
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
 import org.jetbrains.compose.web.css.Position
@@ -95,7 +98,24 @@ fun HomePage() {
         }
     }
     Button(
-        onClick = {},
+        onClick = {
+            val message = UrlEncoderUtil.encode(
+                """
+                    Здравствуйте!
+                    Меня зовут [Ваше имя]. Я хочу узнать о возможности аренды машины.
+
+                    Интересуют детали:
+                     • Дата аренды: [Указать дату]
+                     • Срок аренды: [Указать срок]
+                     • Предпочтительный автомобиль: [Указать модель или класс автомобиля, если есть]
+
+                    Если машина свободна, прошу уточнить стоимость и условия.
+
+                    Спасибо! Жду вашего ответа.
+                """.trimIndent()
+            )
+            window.open("https://wa.me/$PHONE_NUMBER?text=$message")
+        },
         modifier = DefaultButtonStyle
             .toModifier()
             .size(60.px)

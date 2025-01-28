@@ -45,6 +45,8 @@ kotlin {
             implementation(libs.kobweb.silk)
             implementation(libs.silk.icons.fa)
             implementation(libs.kotlinx.serialization)
+
+            implementation("net.thauvin.erik.urlencoder:urlencoder-lib:1.6.0")
         }
     }
 }
