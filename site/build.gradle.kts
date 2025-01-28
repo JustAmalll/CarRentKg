@@ -9,7 +9,7 @@ plugins {
     alias(libs.plugins.serialization.plugin)
 }
 
-group = "pro.rent"
+group = "car.rent"
 version = "1.0.0"
 
 kobweb {
@@ -31,7 +31,7 @@ kobweb {
 }
 
 kotlin {
-    configAsKobwebApplication("rent", includeServer = true)
+    configAsKobwebApplication("CarRentKg", includeServer = false)
 
     sourceSets {
         commonMain.dependencies {
@@ -44,11 +44,6 @@ kotlin {
             implementation(libs.kobweb.core)
             implementation(libs.kobweb.silk)
             implementation(libs.silk.icons.fa)
-            implementation(libs.kotlinx.serialization)
-        }
-        jvmMain.dependencies {
-            compileOnly(libs.kobweb.api)
-            implementation(libs.mongodb.kotlin.driver)
             implementation(libs.kotlinx.serialization)
         }
     }

@@ -11,6 +11,6 @@ dependencyResolutionManagement {
         google()
     }
 }
-rootProject.name = "rent"
+rootProject.name = "CarRentKg"
 include(":site")
 
