@@ -54,7 +54,7 @@ fun BannerSection(onSelectCarClicked: () -> Unit) {
                 .fillMaxSize()
                 .objectFit(ObjectFit.Cover),
             src = "/banner.jpg",
-            alt = "Cover"
+            alt = "Аренда автомобилей в Бишкеке"
         )
         Box(
             modifier = Modifier

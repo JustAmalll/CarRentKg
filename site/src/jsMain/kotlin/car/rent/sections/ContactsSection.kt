@@ -73,7 +73,7 @@ fun ContactsSection() {
             path = "mailto:info@rentacar.kg?subject=${UrlEncoderUtil.encode("Я хочу узнать насчет аренды машины.")}"
         )
         SpanText(
-            text = "Кыргызстан, г.Бишкек, пр.Мира 123, здание 1, офис 4",
+            text = "Кыргызстан, г.Бишкек, Юнусалиева, 85",
             modifier = Modifier
                 .margin(top = 40.px)
                 .color(Color.white)

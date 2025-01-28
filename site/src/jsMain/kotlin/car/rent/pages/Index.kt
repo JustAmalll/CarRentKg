@@ -57,8 +57,6 @@ fun HomePage() {
     var car by remember { mutableStateOf<Car?>(null) }
     car?.let { CarDetailsPopup(car = it, onClosePopupClicked = { car = null }) }
 
-    println("breakpoint $breakpoint")
-
     Column(
         modifier = Modifier
             .fillMaxWidth()

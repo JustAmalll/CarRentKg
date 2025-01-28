@@ -57,9 +57,7 @@ enum class CarClass(val text: String) {
 }
 
 @Composable
-fun CarParkSection(
-    onClick: (Car) -> Unit
-) {
+fun CarParkSection(onClick: (Car) -> Unit) {
     val breakpoint = rememberBreakpoint()
 
     Column(
@@ -111,15 +109,15 @@ fun CarParkSection(
                                 condition = breakpoint >= Breakpoint.MD,
                                 other = Modifier.size(width = 360.px, height = 272.px)
                             )
-                            .cursor(Cursor.Pointer)
-                            .onClick { onClick(car) }
+                            .cursor(if(car.available) Cursor.Pointer else Cursor.NotAllowed)
+                            .onClick { if (car.available) onClick(car) }
                     ) {
                         Image(
                             modifier = Modifier
                                 .fillMaxSize()
                                 .objectFit(ObjectFit.Cover),
                             src = car.images.first(),
-                            alt = "Post Thumbnail Image"
+                            alt = "Аренда ${car.model} ${car.year} в Бишкеке от ${car.price}"
                         )
                         Box(
                             modifier = Modifier
@@ -146,7 +144,11 @@ fun CarParkSection(
                                     .fontWeight(FontWeight.Bold)
                             )
                             SpanText(
-                                text = "${car.price} сом",
+                                text = if (car.available) {
+                                    "${car.price} сом"
+                                } else {
+                                    "Нет в наличии"
+                                },
                                 modifier = Modifier
                                     .margin(top = 6.px)
                                     .fontSize(20.px)
