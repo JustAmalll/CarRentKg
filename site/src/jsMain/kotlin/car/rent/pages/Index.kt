@@ -5,8 +5,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import car.rent.models.Constants.PHONE_NUMBER
-import car.rent.models.Section
+import car.rent.Constants.PHONE_NUMBER
+import car.rent.navigation.Section
 import car.rent.pages.details.Car
 import car.rent.pages.details.CarDetailsPopup
 import car.rent.sections.BannerSection
@@ -99,8 +99,7 @@ fun HomePage() {
         onClick = {
             val message = UrlEncoderUtil.encode(
                 """
-                    Здравствуйте!
-                    Меня зовут [Ваше имя]. Я хочу узнать о возможности аренды машины.
+                    Здравствуйте! Я хочу узнать о возможности аренды машины.
 
                     Интересуют детали:
                      • Дата аренды: [Указать дату]

@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import car.rent.Constants.PHONE_NUMBER
 import car.rent.sections.CarClass
 import car.rent.styles.DefaultButtonStyle
 import com.varabyte.kobweb.compose.css.Cursor
@@ -47,6 +48,8 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import kotlinx.browser.window
+import net.thauvin.erik.urlencoder.UrlEncoderUtil
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.Position
 import org.jetbrains.compose.web.css.deg
@@ -343,7 +346,20 @@ fun CarDetailsText(car: Car) {
             text = "${car.price} сом"
         )
         Button(
-            onClick = {},
+            onClick = {
+                val message = UrlEncoderUtil.encode(
+                    """
+                    Здравствуйте! Я хочу узнать о возможности аренды ${car.model} ${car.year}.
+
+                    Интересуют даты:
+                     • Дата аренды: [Указать дату]
+                     • Срок аренды: [Указать срок]
+
+                    Спасибо! Жду вашего ответа.
+                """.trimIndent()
+                )
+                window.open("https://wa.me/$PHONE_NUMBER?text=$message")
+            },
             modifier = DefaultButtonStyle
                 .toModifier()
                 .margin(top = 16.px)

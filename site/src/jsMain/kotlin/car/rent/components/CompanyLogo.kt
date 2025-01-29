@@ -1,7 +1,7 @@
 package car.rent.components
 
 import androidx.compose.runtime.Composable
-import car.rent.models.Constants.COMPANY_NAME
+import car.rent.Constants.COMPANY_NAME
 import car.rent.navigation.Screen
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.ui.Modifier

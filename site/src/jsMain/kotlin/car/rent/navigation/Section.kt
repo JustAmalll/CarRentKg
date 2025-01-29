@@ -1,6 +1,7 @@
-package car.rent.models
+package car.rent.navigation
 
-import car.rent.models.Constants.PHONE_NUMBER
+import car.rent.Constants
+import car.rent.Constants.PHONE_NUMBER
 import kotlinx.serialization.Serializable
 
 @Serializable

@@ -1,10 +1,10 @@
 package car.rent.sections
 
 import androidx.compose.runtime.Composable
+import car.rent.Constants.PHONE_NUMBER
+import car.rent.Constants.PHONE_NUMBER_FORMATTED
 import car.rent.components.SectionHeader
-import car.rent.models.Constants.PHONE_NUMBER
-import car.rent.models.Constants.PHONE_NUMBER_FORMATTED
-import car.rent.models.Section
+import car.rent.navigation.Section
 import car.rent.styles.DefaultButtonStyle
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextDecorationLine

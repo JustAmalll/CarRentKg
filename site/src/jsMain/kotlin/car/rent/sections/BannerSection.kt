@@ -1,7 +1,7 @@
 package car.rent.sections
 
 import androidx.compose.runtime.Composable
-import car.rent.models.Section
+import car.rent.navigation.Section
 import car.rent.pages.MAX_PAGE_WIDTH
 import car.rent.styles.DefaultButtonStyle
 import com.varabyte.kobweb.compose.css.FontWeight

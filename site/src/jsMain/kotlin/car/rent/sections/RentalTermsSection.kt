@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import car.rent.components.SectionHeader
-import car.rent.models.Section
+import car.rent.navigation.Section
 import car.rent.styles.DefaultButtonStyle
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight

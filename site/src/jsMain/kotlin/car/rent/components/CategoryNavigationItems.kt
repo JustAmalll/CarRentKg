@@ -1,7 +1,7 @@
 package car.rent.components
 
 import androidx.compose.runtime.Composable
-import car.rent.models.Section
+import car.rent.navigation.Section
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.css.WhiteSpace
 import com.varabyte.kobweb.compose.foundation.layout.RowScope

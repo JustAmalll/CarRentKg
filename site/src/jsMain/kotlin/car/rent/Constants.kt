@@ -1,4 +1,4 @@
-package car.rent.models
+package car.rent
 
 object Constants {
     const val COMPANY_NAME = "CARRENT.KG"

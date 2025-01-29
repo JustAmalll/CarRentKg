@@ -1,19 +1,5 @@
 @font-face {
   font-family: 'Geometria';
-  src: url('/fonts/geometria/Geometria-Thin.ttf');
-  font-weight: 100;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Geometria';
-  src: url('/fonts/geometria/Geometria-ExtraLight.ttf');
-  font-weight: 200;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Geometria';
   src: url('/fonts/geometria/Geometria-Light.ttf');
   font-weight: 300;
   font-style: normal;
