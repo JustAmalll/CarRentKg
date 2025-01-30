@@ -1,5 +1,7 @@
 import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.link
+import kotlinx.html.script
+import kotlinx.html.unsafe
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -19,6 +21,24 @@ kobweb {
 
             head.add {
                 link(rel = "stylesheet", href = "/fonts/faces.css")
+
+                script {
+                    async = true
+                    src = "https://www.googletagmanager.com/gtag/js?id=AW-16845554442"
+                }
+                script {
+                    unsafe {
+                        raw(
+                            """
+                            window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+                            
+                            gtag('config', 'AW-16845554442');
+                            """.trimIndent()
+                        )
+                    }
+                }
             }
         }
     }
