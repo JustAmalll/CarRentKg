@@ -7,6 +7,8 @@ import car.rent.Constants.PHONE_NUMBER_FORMATTED
 import car.rent.components.CompanyLogo
 import car.rent.navigation.Section
 import car.rent.pages.MAX_PAGE_WIDTH
+import car.rent.pages.handleContactsLink
+import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.css.WhiteSpace
@@ -14,6 +16,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.color
+import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
@@ -85,36 +88,34 @@ fun FooterSection() {
                 )
                 FooterItem(
                     text = "Эконом класс",
+                    path = Section.CarPark.path,
                     onClick = {}
                 )
                 FooterItem(
                     text = "Премиум класс",
+                    path = Section.CarPark.path,
                     onClick = {}
                 )
                 FooterItem(
                     text = "Внедорожники",
+                    path = Section.CarPark.path,
                     onClick = {}
                 )
                 FooterItem(
                     text = "Электромобили",
+                    path = Section.CarPark.path,
                     onClick = {}
                 )
             }
             Column(modifier = Modifier.weight(1f)) {
-                Link(
-                    modifier = Modifier
-                        .fontSize(36.px)
-                        .color(Color.white)
-                        .textDecorationLine(TextDecorationLine.None),
-                    text = PHONE_NUMBER_FORMATTED,
-                    path = "tel:$PHONE_NUMBER"
-                )
                 SpanText(
                     modifier = Modifier
                         .fontSize(36.px)
                         .color(Color.white)
-                        .margin(top = 2.px),
-                    text = "info@rentacar.kg"
+                        .cursor(Cursor.Pointer)
+                        .textDecorationLine(TextDecorationLine.None)
+                        .onClick { handleContactsLink(url = "tel:$PHONE_NUMBER") },
+                    text = PHONE_NUMBER_FORMATTED
                 )
             }
         }

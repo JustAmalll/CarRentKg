@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import car.rent.Constants.PHONE_NUMBER
+import car.rent.pages.handleContactsLink
 import car.rent.sections.CarClass
 import car.rent.styles.DefaultButtonStyle
 import com.varabyte.kobweb.compose.css.Cursor
@@ -48,7 +49,6 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
-import kotlinx.browser.window
 import net.thauvin.erik.urlencoder.UrlEncoderUtil
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.Position
@@ -161,7 +161,7 @@ enum class Car(
         images = listOf("/outback_2020_green/2020_subaru_outback_4dr-suv_limited_fq_oem_1_1600.jpg"),
         available = false
     ),
-    OPTIMA_2018(
+    K5_2018(
         model = "Kia Optima",
         year = 2018,
         specs = "",
@@ -169,10 +169,10 @@ enum class Car(
         description = "",
         detailsPrices = emptyList(),
         carClass = CarClass.CHEAP,
-        images = listOf("/optima_2018_white/2018-kia-optima-white.jpg"),
+        images = listOf("/k5_2018_white/2018-kia-optima-white.jpg"),
         available = false
     ),
-    OPTIMA_2021(
+    K5_2021(
         model = "Kia K5",
         year = 2021,
         specs = "",
@@ -180,7 +180,7 @@ enum class Car(
         description = "",
         detailsPrices = emptyList(),
         carClass = CarClass.COMFORT,
-        images = listOf("/optima_2021_black/kia_k5_2021.jpg"),
+        images = listOf("/k5_2021_black/kia_k5_2021.jpg"),
         available = false
     ),
     X5_2010(
@@ -203,6 +203,28 @@ enum class Car(
         detailsPrices = emptyList(),
         carClass = CarClass.COMFORT,
         images = listOf("/kia_carnival_2014/kia_carnival.jpg"),
+        available = false
+    ),
+    SPORTAGE_2018(
+        model = "KIA Sportage",
+        year = 2018,
+        specs = "",
+        price = 4000,
+        description = "",
+        detailsPrices = emptyList(),
+        carClass = CarClass.CROSSOVER,
+        images = listOf("/sportage_2018_white/sportage_white.png"),
+        available = false
+    ),
+    CAMRY_2018(
+        model = "Toyota Camry",
+        year = 2018,
+        specs = "",
+        price = 4200,
+        description = "",
+        detailsPrices = emptyList(),
+        carClass = CarClass.COMFORT,
+        images = listOf("/camry_2018_white/camry.png"),
         available = false
     )
 }
@@ -350,15 +372,10 @@ fun CarDetailsText(car: Car) {
                 val message = UrlEncoderUtil.encode(
                     """
                     Здравствуйте! Я хочу узнать о возможности аренды ${car.model} ${car.year}.
-
-                    Интересуют даты:
-                     • Дата аренды: [Указать дату]
-                     • Срок аренды: [Указать срок]
-
                     Спасибо! Жду вашего ответа.
                 """.trimIndent()
                 )
-                window.open("https://wa.me/$PHONE_NUMBER?text=$message")
+                handleContactsLink(url = "https://wa.me/$PHONE_NUMBER?text=$message")
             },
             modifier = DefaultButtonStyle
                 .toModifier()

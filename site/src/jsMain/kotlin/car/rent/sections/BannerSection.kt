@@ -112,9 +112,9 @@ fun BannerSection(onSelectCarClicked: () -> Unit) {
             )
             SpanText(
                 text = if (breakpoint >= Breakpoint.MD) {
-                    "Аренда автомобиля за\n15 минут — быстро, удобно,\nнадежно."
+                    "Аренда автомобиля за\n10 минут — быстро, удобно,\nнадежно."
                 } else {
-                    "Аренда автомобиля за 15\nминут — быстро, удобно, надежно."
+                    "Аренда автомобиля за 10\nминут — быстро, удобно, надежно."
                 },
                 modifier = Modifier
                     .margin(
@@ -159,7 +159,7 @@ fun BannerSection(onSelectCarClicked: () -> Unit) {
                             else -> 24.px
                         }
                     )
-                    .padding(leftRight = 5.percent, topBottom = 1.5.percent)
+                    .padding(leftRight = 5.percent, topBottom = 1.6.percent)
                     .fontWeight(FontWeight.Bold)
                     .fontSize(
                         when {

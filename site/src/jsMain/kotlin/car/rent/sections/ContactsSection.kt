@@ -5,7 +5,9 @@ import car.rent.Constants.PHONE_NUMBER
 import car.rent.Constants.PHONE_NUMBER_FORMATTED
 import car.rent.components.SectionHeader
 import car.rent.navigation.Section
+import car.rent.pages.handleContactsLink
 import car.rent.styles.DefaultButtonStyle
+import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextDecorationLine
 import com.varabyte.kobweb.compose.foundation.layout.Box
@@ -14,6 +16,7 @@ import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.borderRadius
 import com.varabyte.kobweb.compose.ui.modifiers.color
+import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
@@ -29,8 +32,6 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
-import kotlinx.browser.window
-import net.thauvin.erik.urlencoder.UrlEncoderUtil
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
@@ -58,24 +59,14 @@ fun ContactsSection() {
                 .fontSize(if (breakpoint >= Breakpoint.MD) 90.px else 30.px)
                 .color(Color.white)
                 .fontWeight(FontWeight.Medium)
+                .cursor(Cursor.Pointer)
                 .textDecorationLine(TextDecorationLine.None),
             path = "tel:$PHONE_NUMBER"
-        )
-        Link(
-            text = "info@rentacar.kg",
-            modifier = Modifier
-                .margin(top = 4.px)
-                .fontSize(if (breakpoint >= Breakpoint.MD) 90.px else 32.px)
-                .lineHeight(if (breakpoint >= Breakpoint.MD) 90.px else 32.px)
-                .color(Color.white)
-                .fontWeight(FontWeight.Medium)
-                .textDecorationLine(TextDecorationLine.None),
-            path = "mailto:info@rentacar.kg?subject=${UrlEncoderUtil.encode("Я хочу узнать насчет аренды машины.")}"
         )
         SpanText(
             text = "Кыргызстан, г.Бишкек, Юнусалиева, 85",
             modifier = Modifier
-                .margin(top = 40.px)
+                .margin(top = 24.px)
                 .color(Color.white)
                 .fontSize(if (breakpoint >= Breakpoint.MD) 30.px else 22.px)
                 .lineHeight(if (breakpoint >= Breakpoint.MD) 38.px else 30.px)
@@ -88,7 +79,7 @@ fun ContactsSection() {
                 .margin(top = if (breakpoint >= Breakpoint.MD) 100.px else 60.px)
                 .padding(leftRight = 8.percent, topBottom = 2.percent)
                 .borderRadius(r = 80.px)
-                .onClick { window.location.href = "tel:$PHONE_NUMBER" },
+                .onClick { handleContactsLink(url = "tel:$PHONE_NUMBER") },
             contentAlignment = Alignment.Center
         ) {
             SpanText(

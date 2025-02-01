@@ -85,7 +85,7 @@ fun RentalTermsSection() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .margin(top = 16.px),
+                .margin(top = 24.px),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
@@ -124,12 +124,15 @@ private fun TermItem(text: String, description: String) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(topBottom = if (breakpoint >= Breakpoint.MD) 26.px else 16.px)
-            .cursor(Cursor.Pointer)
-            .onClick { expanded = !expanded },
+            .cursor(Cursor.Pointer),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Column(modifier = Modifier.fillMaxWidth()) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .onClick { expanded = !expanded }
+        ) {
             SpanText(
                 modifier = Modifier
                     .fontSize(if (breakpoint >= Breakpoint.MD) 30.px else 20.px)

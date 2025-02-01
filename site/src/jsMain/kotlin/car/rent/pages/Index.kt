@@ -38,7 +38,6 @@ import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
-import kotlinx.browser.window
 import net.thauvin.erik.urlencoder.UrlEncoderUtil
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -47,6 +46,9 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
 const val MAX_PAGE_WIDTH = 1240
+
+@JsName("gtag_report_conversion")
+external fun handleContactsLink(url: String): Boolean
 
 @Page
 @Composable
@@ -102,20 +104,20 @@ fun HomePage() {
                     Здравствуйте! Я хочу узнать о возможности аренды машины.
 
                     Интересуют детали:
-                     • Дата аренды: [Указать дату]
-                     • Срок аренды: [Указать срок]
-                     • Предпочтительный автомобиль: [Указать модель или класс автомобиля, если есть]
+                     • Дата аренды: 
+                     • Срок аренды: 
+                     • Предпочтительный автомобиль: 
 
                     Если машина свободна, прошу уточнить стоимость и условия.
 
                     Спасибо! Жду вашего ответа.
                 """.trimIndent()
             )
-            window.open("https://wa.me/$PHONE_NUMBER?text=$message")
+            handleContactsLink(url = "https://wa.me/$PHONE_NUMBER?text=$message")
         },
         modifier = DefaultButtonStyle
             .toModifier()
-            .size(60.px)
+            .size(64.px)
             .borderRadius(50.percent)
             .position(Position.Fixed)
             .bottom(24.px)
