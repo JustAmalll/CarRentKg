@@ -7,7 +7,6 @@ import car.rent.Constants.PHONE_NUMBER_FORMATTED
 import car.rent.components.CompanyLogo
 import car.rent.navigation.Section
 import car.rent.pages.MAX_PAGE_WIDTH
-import car.rent.pages.handleContactsLink
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextDecorationLine
@@ -108,14 +107,14 @@ fun FooterSection() {
                 )
             }
             Column(modifier = Modifier.weight(1f)) {
-                SpanText(
+                Link(
                     modifier = Modifier
                         .fontSize(36.px)
                         .color(Color.white)
                         .cursor(Cursor.Pointer)
-                        .textDecorationLine(TextDecorationLine.None)
-                        .onClick { handleContactsLink(url = "tel:$PHONE_NUMBER") },
-                    text = PHONE_NUMBER_FORMATTED
+                        .textDecorationLine(TextDecorationLine.None),
+                    text = PHONE_NUMBER_FORMATTED,
+                    path = "tel:$PHONE_NUMBER"
                 )
             }
         }

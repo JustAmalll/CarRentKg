@@ -38,6 +38,7 @@ import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import kotlinx.browser.window
 import net.thauvin.erik.urlencoder.UrlEncoderUtil
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -46,9 +47,6 @@ import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
 const val MAX_PAGE_WIDTH = 1240
-
-@JsName("gtag_report_conversion")
-external fun handleContactsLink(url: String): Boolean
 
 @Page
 @Composable
@@ -113,7 +111,7 @@ fun HomePage() {
                     Спасибо! Жду вашего ответа.
                 """.trimIndent()
             )
-            handleContactsLink(url = "https://wa.me/$PHONE_NUMBER?text=$message")
+            window.open("https://wa.me/$PHONE_NUMBER?text=$message")
         },
         modifier = DefaultButtonStyle
             .toModifier()

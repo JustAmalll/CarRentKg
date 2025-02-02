@@ -6,7 +6,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import car.rent.Constants.PHONE_NUMBER
-import car.rent.pages.handleContactsLink
 import car.rent.sections.CarClass
 import car.rent.styles.DefaultButtonStyle
 import com.varabyte.kobweb.compose.css.Cursor
@@ -27,6 +26,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.gap
 import com.varabyte.kobweb.compose.ui.modifiers.height
+import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.minWidth
@@ -49,6 +49,7 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import kotlinx.browser.window
 import net.thauvin.erik.urlencoder.UrlEncoderUtil
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.Position
@@ -375,10 +376,11 @@ fun CarDetailsText(car: Car) {
                     Спасибо! Жду вашего ответа.
                 """.trimIndent()
                 )
-                handleContactsLink(url = "https://wa.me/$PHONE_NUMBER?text=$message")
+                window.open("https://wa.me/$PHONE_NUMBER?text=$message")
             },
             modifier = DefaultButtonStyle
                 .toModifier()
+                .id("contact")
                 .margin(top = 16.px)
                 .borderRadius(24.px)
                 .padding(leftRight = 42.px)

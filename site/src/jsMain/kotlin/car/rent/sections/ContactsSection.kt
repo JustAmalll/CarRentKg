@@ -5,7 +5,6 @@ import car.rent.Constants.PHONE_NUMBER
 import car.rent.Constants.PHONE_NUMBER_FORMATTED
 import car.rent.components.SectionHeader
 import car.rent.navigation.Section
-import car.rent.pages.handleContactsLink
 import car.rent.styles.DefaultButtonStyle
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
@@ -32,6 +31,7 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
 import com.varabyte.kobweb.silk.style.toModifier
 import com.varabyte.kobweb.silk.theme.breakpoint.rememberBreakpoint
+import kotlinx.browser.window
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
@@ -55,6 +55,7 @@ fun ContactsSection() {
         Link(
             text = PHONE_NUMBER_FORMATTED,
             modifier = Modifier
+                .id("contact")
                 .margin(top = 42.px)
                 .fontSize(if (breakpoint >= Breakpoint.MD) 90.px else 30.px)
                 .color(Color.white)
@@ -75,11 +76,12 @@ fun ContactsSection() {
         Box(
             modifier = DefaultButtonStyle
                 .toModifier()
+                .id("contact")
                 .align(Alignment.CenterHorizontally)
                 .margin(top = if (breakpoint >= Breakpoint.MD) 100.px else 60.px)
                 .padding(leftRight = 8.percent, topBottom = 2.percent)
                 .borderRadius(r = 80.px)
-                .onClick { handleContactsLink(url = "tel:$PHONE_NUMBER") },
+                .onClick { window.location.href = "tel:$PHONE_NUMBER" },
             contentAlignment = Alignment.Center
         ) {
             SpanText(
