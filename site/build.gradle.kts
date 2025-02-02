@@ -2,7 +2,6 @@ import com.varabyte.kobweb.gradle.application.util.configAsKobwebApplication
 import kotlinx.html.link
 import kotlinx.html.meta
 import kotlinx.html.script
-import kotlinx.html.unsafe
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -35,26 +34,8 @@ kobweb {
                 meta(name = "apple-mobile-web-app-title", content = "CarRent")
                 link(rel = "manifest", href = "/favicon/site.webmanifest")
 
+                script(src = "/gtm.js") {}
                 link(rel = "stylesheet", href = "/fonts/faces.css")
-                script(src = "/gtag.js") {}
-
-                script {
-                    async = true
-                    src = "https://www.googletagmanager.com/gtag/js?id=AW-16845554442"
-                }
-                script {
-                    unsafe {
-                        raw(
-                            """
-                            window.dataLayer = window.dataLayer || [];
-                            function gtag(){dataLayer.push(arguments);}
-                            gtag('js', new Date());
-                            
-                            gtag('config', 'AW-16845554442');
-                            """.trimIndent()
-                        )
-                    }
-                }
             }
         }
     }
