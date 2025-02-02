@@ -63,22 +63,27 @@ fun RentalTermsSection() {
                 .margin(top = 32.px, bottom = 0.px)
         )
         TermItem(
+            id = "rental_age",
             text = "С какого возраста я могу арендовать автомобиль?",
             description = "Вы можете арендовать у нас автомобиль при наличии в/у, с 23 лет."
         )
         TermItem(
+            id = "rental_docs",
             text = "Что нужно для аренды автомобиля?",
             description = "Мы заключаем договор аренды, для этого от Вас потребуется: фото паспорта и прав с двух сторон."
         )
         TermItem(
+            id = "rental_limit",
             text = "Сколько километров я могу проехать на автомобиле?",
             description = "У нас нет ограничений по километрам. Вы можете проезжать любое расстояние в зависимости от ваших потребностей и условий."
         )
         TermItem(
+            id = "rental_fines",
             text = "Что делать, если я получу штраф ПДД или нарушу скоростной режим?",
             description = "Все штрафы за нарушения ПДД и скоростных режимов оплачивает Арендатор."
         )
         TermItem(
+            id = "rental_accident",
             text = "Что делать если я попал в ДТП?",
             description = "Не покидайте место ДТП, необходимо сразу сообщить об этом Арендодателю."
         )
@@ -116,7 +121,11 @@ fun RentalTermsSection() {
 }
 
 @Composable
-private fun TermItem(text: String, description: String) {
+private fun TermItem(
+    id: String,
+    text: String,
+    description: String
+) {
     val breakpoint = rememberBreakpoint()
     var expanded by remember { mutableStateOf(false) }
 
@@ -130,6 +139,7 @@ private fun TermItem(text: String, description: String) {
     ) {
         Column(
             modifier = Modifier
+                .id(id)
                 .fillMaxWidth()
                 .onClick { expanded = !expanded }
         ) {
@@ -155,6 +165,7 @@ private fun TermItem(text: String, description: String) {
         Box(
             modifier = DefaultButtonStyle
                 .toModifier()
+                .id(id)
                 .size(if (breakpoint >= Breakpoint.MD) 48.px else 30.px)
                 .borderRadius(50.percent)
                 .flexShrink(0)

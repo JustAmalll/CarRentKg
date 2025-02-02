@@ -152,6 +152,7 @@ fun BannerSection(onSelectCarClicked: () -> Unit) {
             Box(
                 modifier = DefaultButtonStyle
                     .toModifier()
+                    .id("btn_choose_car")
                     .margin(
                         top = when {
                             breakpoint > Breakpoint.MD -> 42.px

@@ -19,6 +19,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.cursor
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.fontSize
 import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
+import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.onClick
@@ -109,6 +110,7 @@ fun FooterSection() {
             Column(modifier = Modifier.weight(1f)) {
                 Link(
                     modifier = Modifier
+                        .id("footer_call")
                         .fontSize(36.px)
                         .color(Color.white)
                         .cursor(Cursor.Pointer)

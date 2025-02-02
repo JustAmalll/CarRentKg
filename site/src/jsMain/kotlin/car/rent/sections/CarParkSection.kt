@@ -52,10 +52,10 @@ import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
 
-enum class CarClass(val text: String) {
-    CHEAP(text = "ЭКОНОМ КЛАСС"),
-    COMFORT(text = "КОМФОРТ КЛАСС"),
-    CROSSOVER(text = "КРОССОВЕР")
+enum class CarClass(val id: String, val text: String) {
+    CHEAP(id = "economy", text = "ЭКОНОМ КЛАСС"),
+    COMFORT(id = "comfort", text = "КОМФОРТ КЛАСС"),
+    CROSSOVER(id = "crossover", text = "КРОССОВЕР")
 }
 
 @Composable
@@ -90,6 +90,7 @@ fun CarParkSection(onClick: (Car) -> Unit) {
             ) {
                 CarClass.entries.forEach { item ->
                     CarClass(
+                        id = item.id,
                         text = item.text,
                         selected = selectedCarClass == item,
                         onClick = { selectedCarClass = item }
@@ -107,11 +108,12 @@ fun CarParkSection(onClick: (Car) -> Unit) {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
+                            .id(car.id)
                             .thenIf(
                                 condition = breakpoint >= Breakpoint.MD,
                                 other = Modifier.size(width = 360.px, height = 272.px)
                             )
-                            .cursor(if(car.available) Cursor.Pointer else Cursor.NotAllowed)
+                            .cursor(if (car.available) Cursor.Pointer else Cursor.NotAllowed)
                             .onClick { if (car.available) onClick(car) }
                     ) {
                         Image(
@@ -167,6 +169,7 @@ fun CarParkSection(onClick: (Car) -> Unit) {
 
 @Composable
 fun RowScope.CarClass(
+    id: String,
     text: String,
     selected: Boolean,
     onClick: () -> Unit
@@ -175,6 +178,7 @@ fun RowScope.CarClass(
 
     Column(
         modifier = Modifier
+            .id(id)
             .weight(1f)
             .cursor(Cursor.Pointer)
             .onClick { onClick() },

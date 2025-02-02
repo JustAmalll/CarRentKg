@@ -59,6 +59,7 @@ import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Text
 
 enum class Car(
+    val id: String,
     val model: String,
     val year: Int,
     val specs: String,
@@ -70,6 +71,7 @@ enum class Car(
     val available: Boolean
 ) {
     SONATA_2018_GRAY(
+        id = "sonata_2018_silver",
         model = "Hyundai Sonata",
         year = 2018,
         specs = "2.0 | 150-163 л.c | Газ | Передний привод | Цвет: Серебристый",
@@ -91,6 +93,7 @@ enum class Car(
         available = true
     ),
     SONATA_2018_BLACK(
+        id = "sonata_2018_black",
         model = "Hyundai Sonata",
         year = 2018,
         specs = "2.0 | 150-163 л.c | Газ | Передний привод | Цвет: Черный",
@@ -111,6 +114,7 @@ enum class Car(
         available = true
     ),
     SONATA_2020(
+        id = "sonata_2020_black",
         model = "Hyundai Sonata",
         year = 2020,
         specs = "2.0 | 150-160 л.c | Газ | Передний привод | Цвет: Черный",
@@ -131,6 +135,7 @@ enum class Car(
         available = true
     ),
     TUSCON_2019(
+        id = "tucson_2019_grey",
         model = "Hyundai Tucson",
         year = 2019,
         specs = "2.0 | 136–185 л.c | Дизель | Полный привод | Цвет: Серый",
@@ -152,6 +157,7 @@ enum class Car(
         available = true
     ),
     OUTBACK_2019(
+        id = "outback_2020_green",
         model = "Subaru Outback",
         year = 2020,
         specs = "",
@@ -163,6 +169,7 @@ enum class Car(
         available = false
     ),
     K5_2018(
+        id = "k5_2018_white",
         model = "Kia Optima",
         year = 2018,
         specs = "",
@@ -174,6 +181,7 @@ enum class Car(
         available = false
     ),
     K5_2021(
+        id = "k5_2021_black",
         model = "Kia K5",
         year = 2021,
         specs = "",
@@ -185,6 +193,7 @@ enum class Car(
         available = false
     ),
     X5_2010(
+        id = "x5_2010_gray",
         model = "BMW X5",
         year = 2010,
         specs = "",
@@ -196,6 +205,7 @@ enum class Car(
         available = false
     ),
     CORNIVAL_2014(
+        id = "kia_carnival_2014",
         model = "KIA Cornival",
         year = 2014,
         specs = "",
@@ -207,6 +217,7 @@ enum class Car(
         available = false
     ),
     SPORTAGE_2018(
+        id = "sportage_2018_white",
         model = "KIA Sportage",
         year = 2018,
         specs = "",
@@ -218,6 +229,7 @@ enum class Car(
         available = false
     ),
     CAMRY_2018(
+        id = "camry_2018_white",
         model = "Toyota Camry",
         year = 2018,
         specs = "",
