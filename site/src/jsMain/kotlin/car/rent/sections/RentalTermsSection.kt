@@ -130,10 +130,7 @@ private fun TermItem(
     var expanded by remember { mutableStateOf(false) }
 
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(topBottom = if (breakpoint >= Breakpoint.MD) 26.px else 16.px)
-            .cursor(Cursor.Pointer),
+        modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -141,6 +138,8 @@ private fun TermItem(
             modifier = Modifier
                 .id(id)
                 .fillMaxWidth()
+                .padding(topBottom = if (breakpoint >= Breakpoint.MD) 30.px else 18.px)
+                .cursor(Cursor.Pointer)
                 .onClick { expanded = !expanded }
         ) {
             SpanText(
@@ -169,6 +168,7 @@ private fun TermItem(
                 .size(if (breakpoint >= Breakpoint.MD) 48.px else 30.px)
                 .borderRadius(50.percent)
                 .flexShrink(0)
+                .cursor(Cursor.Pointer)
                 .onClick { expanded = !expanded },
             contentAlignment = Alignment.Center
         ) {
