@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "car.rent"
-version = "1.0.0"
+version = "1.0.1"
 
 kobweb {
     app {
@@ -32,6 +32,7 @@ kobweb {
                     sizes = "180x180"
                 }
                 meta(name = "apple-mobile-web-app-title", content = "CarRent")
+                meta(name = "version", content = "1.0.1")
                 link(rel = "manifest", href = "/favicon/site.webmanifest")
 
                 script(src = "/gtm.js") {}
