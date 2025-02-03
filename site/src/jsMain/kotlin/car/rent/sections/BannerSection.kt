@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import car.rent.navigation.Section
 import car.rent.pages.MAX_PAGE_WIDTH
 import car.rent.styles.DefaultButtonStyle
+import car.rent.utils.onClicked
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.ObjectFit
 import com.varabyte.kobweb.compose.css.TextAlign
@@ -24,7 +25,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.objectFit
-import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textAlign
 import com.varabyte.kobweb.compose.ui.modifiers.whiteSpace
@@ -170,7 +170,7 @@ fun BannerSection(onSelectCarClicked: () -> Unit) {
                         }
                     )
                     .borderRadius(r = 80.px)
-                    .onClick { onSelectCarClicked() },
+                    .onClicked { onSelectCarClicked() },
                 contentAlignment = Alignment.Center
             ) {
                 Text(value = "ВЫБРАТЬ АВТОМОБИЛЬ")

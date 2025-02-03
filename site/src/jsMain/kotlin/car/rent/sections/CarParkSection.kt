@@ -8,9 +8,11 @@ import androidx.compose.runtime.setValue
 import car.rent.components.SectionHeader
 import car.rent.navigation.Section
 import car.rent.pages.details.Car
+import car.rent.utils.onClicked
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.ObjectFit
+import com.varabyte.kobweb.compose.css.PointerEvents
 import com.varabyte.kobweb.compose.css.UserSelect
 import com.varabyte.kobweb.compose.css.functions.LinearGradient
 import com.varabyte.kobweb.compose.css.functions.linearGradient
@@ -36,9 +38,9 @@ import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.objectFit
-import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.opacity
 import com.varabyte.kobweb.compose.ui.modifiers.padding
+import com.varabyte.kobweb.compose.ui.modifiers.pointerEvents
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.userSelect
 import com.varabyte.kobweb.compose.ui.thenIf
@@ -114,7 +116,7 @@ fun CarParkSection(onClick: (Car) -> Unit) {
                                 other = Modifier.size(width = 360.px, height = 272.px)
                             )
                             .cursor(if (car.available) Cursor.Pointer else Cursor.NotAllowed)
-                            .onClick { if (car.available) onClick(car) }
+                            .onClicked { if (car.available) onClick(car) }
                     ) {
                         Image(
                             modifier = Modifier
@@ -181,7 +183,7 @@ fun RowScope.CarClass(
             .id(id)
             .weight(1f)
             .cursor(Cursor.Pointer)
-            .onClick { onClick() },
+            .onClicked { onClick() },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         SpanText(
@@ -213,6 +215,7 @@ fun RowScope.CarClass(
                 .margin(top = if (selected) 0.px else 1.px)
                 .opacity(if (selected) 1 else 0.2)
                 .borderRadius(if (selected) 4.px else 0.px)
+                .pointerEvents(PointerEvents.None)
         )
     }
 }

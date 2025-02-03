@@ -6,6 +6,7 @@ import car.rent.Constants.PHONE_NUMBER_FORMATTED
 import car.rent.components.SectionHeader
 import car.rent.navigation.Section
 import car.rent.styles.DefaultButtonStyle
+import car.rent.utils.onClicked
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextDecorationLine
@@ -23,7 +24,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.modifiers.letterSpacing
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
-import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textDecorationLine
 import com.varabyte.kobweb.silk.components.navigation.Link
@@ -35,6 +35,7 @@ import kotlinx.browser.window
 import org.jetbrains.compose.web.css.Color
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
+import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun ContactsSection() {
@@ -81,16 +82,13 @@ fun ContactsSection() {
                 .margin(top = if (breakpoint >= Breakpoint.MD) 100.px else 60.px)
                 .padding(leftRight = 8.percent, topBottom = 2.percent)
                 .borderRadius(r = 80.px)
-                .onClick { window.location.href = "tel:$PHONE_NUMBER" },
+                .fontWeight(FontWeight.Bold)
+                .fontSize(if (breakpoint >= Breakpoint.MD) 24.px else 16.px)
+                .letterSpacing(1.2.px)
+                .onClicked { window.location.href = "tel:$PHONE_NUMBER" },
             contentAlignment = Alignment.Center
         ) {
-            SpanText(
-                text = "ПОЗВОНИТЕ НАМ",
-                modifier = Modifier
-                    .fontWeight(FontWeight.Bold)
-                    .fontSize(if (breakpoint >= Breakpoint.MD) 24.px else 16.px)
-                    .letterSpacing(1.2.px)
-            )
+            Text(value = "ПОЗВОНИТЕ НАМ")
         }
     }
 }

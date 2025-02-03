@@ -8,6 +8,7 @@ import androidx.compose.runtime.setValue
 import car.rent.components.SectionHeader
 import car.rent.navigation.Section
 import car.rent.styles.DefaultButtonStyle
+import car.rent.utils.onClicked
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -26,7 +27,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
-import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.rotate
 import com.varabyte.kobweb.compose.ui.modifiers.size
@@ -65,7 +65,7 @@ fun RentalTermsSection() {
         TermItem(
             id = "rental_age",
             text = "С какого возраста я могу арендовать автомобиль?",
-            description = "Вы можете арендовать у нас автомобиль при наличии в/у, с 23 лет."
+            description = "Вы можете арендовать у нас автомобиль если ваш возраст от 23 лет и стаж вождения от 3-х лет"
         )
         TermItem(
             id = "rental_docs",
@@ -140,7 +140,7 @@ private fun TermItem(
                 .fillMaxWidth()
                 .padding(topBottom = if (breakpoint >= Breakpoint.MD) 30.px else 18.px)
                 .cursor(Cursor.Pointer)
-                .onClick { expanded = !expanded }
+                .onClicked { expanded = !expanded }
         ) {
             SpanText(
                 modifier = Modifier
@@ -169,7 +169,7 @@ private fun TermItem(
                 .borderRadius(50.percent)
                 .flexShrink(0)
                 .cursor(Cursor.Pointer)
-                .onClick { expanded = !expanded },
+                .onClicked { expanded = !expanded },
             contentAlignment = Alignment.Center
         ) {
             Image(
