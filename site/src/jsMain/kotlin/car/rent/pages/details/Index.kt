@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import car.rent.Constants.PHONE_NUMBER
+import car.rent.pushEventToGTM
 import car.rent.sections.CarClass
 import car.rent.styles.DefaultButtonStyle
 import com.varabyte.kobweb.compose.css.Cursor
@@ -382,6 +383,10 @@ fun CarDetailsText(car: Car) {
         )
         Button(
             onClick = {
+                pushEventToGTM(
+                    eventName = "rent_a_car_clicked",
+                    params = mapOf("car" to car.id)
+                )
                 val message = UrlEncoderUtil.encode(
                     """
                     Здравствуйте! Я хочу узнать о возможности аренды ${car.model} ${car.year}.
@@ -392,7 +397,7 @@ fun CarDetailsText(car: Car) {
             },
             modifier = DefaultButtonStyle
                 .toModifier()
-                .id("contact")
+                .id("btn_rent_a_car")
                 .margin(top = 16.px)
                 .borderRadius(24.px)
                 .padding(leftRight = 42.px)
