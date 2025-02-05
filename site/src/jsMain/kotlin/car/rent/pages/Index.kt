@@ -10,6 +10,7 @@ import car.rent.navigation.Section
 import car.rent.pages.details.Car
 import car.rent.pages.details.CarDetailsPopup
 import car.rent.pushEventToGTM
+import car.rent.sections.AboutCompanySection
 import car.rent.sections.BannerSection
 import car.rent.sections.CarParkSection
 import car.rent.sections.ContactsSection
@@ -88,6 +89,8 @@ fun HomePage() {
                 .padding(leftRight = 32.px),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            AboutCompanySection(breakpoint = breakpoint)
+
             CarParkSection(
                 onClick = {
                     pushEventToGTM(

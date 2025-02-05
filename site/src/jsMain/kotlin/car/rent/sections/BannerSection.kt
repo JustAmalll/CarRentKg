@@ -1,7 +1,6 @@
 package car.rent.sections
 
 import androidx.compose.runtime.Composable
-import car.rent.navigation.Section
 import car.rent.pages.MAX_PAGE_WIDTH
 import car.rent.styles.DefaultButtonStyle
 import com.varabyte.kobweb.compose.css.FontWeight
@@ -44,9 +43,7 @@ fun BannerSection(onSelectCarClicked: () -> Unit) {
     val breakpoint = rememberBreakpoint()
 
     Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .id(Section.AboutCompany.id),
+        modifier = Modifier.fillMaxWidth(),
         contentAlignment = Alignment.Center
     ) {
         Image(

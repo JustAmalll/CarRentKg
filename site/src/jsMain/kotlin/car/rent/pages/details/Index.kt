@@ -171,7 +171,7 @@ enum class Car(
     ),
     K5_2018(
         id = "k5_2018_white",
-        model = "Kia Optima",
+        model = "Kia K5",
         year = 2018,
         specs = "",
         price = 3500,

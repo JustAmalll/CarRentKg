@@ -56,9 +56,9 @@ import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.rgba
 
 enum class CarClass(val id: String, val text: String) {
-    CHEAP(id = "economy", text = "ЭКОНОМ КЛАСС"),
-    COMFORT(id = "comfort", text = "КОМФОРТ КЛАСС"),
-    CROSSOVER(id = "crossover", text = "КРОССОВЕР")
+    CHEAP(id = "economy", text = "Эконом класс"),
+    COMFORT(id = "comfort", text = "Комфорт класс"),
+    CROSSOVER(id = "crossover", text = "Кроссовер")
 }
 
 @Composable
@@ -73,10 +73,10 @@ fun CarParkSection(onClick: (Car) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 40.px)
+            .padding(top = 60.px)
+            .margin(top = 40.px)
             .id(Section.CarPark.id)
     ) {
-
         Column(
             modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.Center
@@ -94,7 +94,7 @@ fun CarParkSection(onClick: (Car) -> Unit) {
                 CarClass.entries.forEach { item ->
                     CarClass(
                         id = item.id,
-                        text = item.text,
+                        text = item.text.uppercase(),
                         selected = selectedCarClass == item,
                         onClick = {
                             pushEventToGTM(

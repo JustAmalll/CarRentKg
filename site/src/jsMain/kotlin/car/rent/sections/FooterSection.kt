@@ -87,26 +87,13 @@ fun FooterSection() {
                         .margin(bottom = 16.px),
                     text = "АВТОПАРК"
                 )
-                FooterItem(
-                    text = "Эконом класс",
-                    path = Section.CarPark.path,
-                    onClick = {}
-                )
-                FooterItem(
-                    text = "Премиум класс",
-                    path = Section.CarPark.path,
-                    onClick = {}
-                )
-                FooterItem(
-                    text = "Внедорожники",
-                    path = Section.CarPark.path,
-                    onClick = {}
-                )
-                FooterItem(
-                    text = "Электромобили",
-                    path = Section.CarPark.path,
-                    onClick = {}
-                )
+                CarClass.entries.forEach {
+                    FooterItem(
+                        text = it.text,
+                        path = Section.CarPark.path,
+                        onClick = {}
+                    )
+                }
             }
             Column(modifier = Modifier.weight(1f)) {
                 Link(
