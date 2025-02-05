@@ -135,7 +135,7 @@ private fun TermItem(
         {
             pushEventToGTM(
                 eventName = "faq_expand_click",
-                params = mapOf()
+                params = mapOf("faq_question" to id)
             )
             expanded = !expanded
         }
