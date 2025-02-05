@@ -96,7 +96,13 @@ fun CarParkSection(onClick: (Car) -> Unit) {
                         id = item.id,
                         text = item.text,
                         selected = selectedCarClass == item,
-                        onClick = { selectedCarClass = item }
+                        onClick = {
+                            pushEventToGTM(
+                                eventName = "car_class_click",
+                                params = mapOf("car_class" to item.id)
+                            )
+                            selectedCarClass = item
+                        }
                     )
                 }
             }
@@ -134,15 +140,7 @@ fun CarItem(
                 other = Modifier.size(width = 360.px, height = 272.px)
             )
             .cursor(if (car.available) Cursor.Pointer else Cursor.NotAllowed)
-            .onClick {
-                if (car.available) {
-                    pushEventToGTM(
-                        eventName = "car_card_click",
-                        params = mapOf("car" to car.id)
-                    )
-                    onClick(car)
-                }
-            }
+            .onClick { if (car.available) onClick(car) }
     ) {
         Image(
             modifier = Modifier

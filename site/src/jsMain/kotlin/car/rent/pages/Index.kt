@@ -9,6 +9,7 @@ import car.rent.Constants.PHONE_NUMBER
 import car.rent.navigation.Section
 import car.rent.pages.details.Car
 import car.rent.pages.details.CarDetailsPopup
+import car.rent.pushEventToGTM
 import car.rent.sections.BannerSection
 import car.rent.sections.CarParkSection
 import car.rent.sections.ContactsSection
@@ -87,7 +88,15 @@ fun HomePage() {
                 .padding(leftRight = 32.px),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            CarParkSection(onClick = { car = it })
+            CarParkSection(
+                onClick = {
+                    pushEventToGTM(
+                        eventName = "car_card_click",
+                        params = mapOf("car" to it.id)
+                    )
+                    car = it
+                }
+            )
             RentalTermsSection()
             ContactsSection()
         }

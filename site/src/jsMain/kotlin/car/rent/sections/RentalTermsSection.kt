@@ -7,6 +7,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import car.rent.components.SectionHeader
 import car.rent.navigation.Section
+import car.rent.pushEventToGTM
 import car.rent.styles.DefaultButtonStyle
 
 import com.varabyte.kobweb.compose.css.Cursor
@@ -130,6 +131,16 @@ private fun TermItem(
     val breakpoint = rememberBreakpoint()
     var expanded by remember { mutableStateOf(false) }
 
+    val onClick: () -> Unit = remember {
+        {
+            pushEventToGTM(
+                eventName = "faq_expand_click",
+                params = mapOf()
+            )
+            expanded = !expanded
+        }
+    }
+
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -141,7 +152,7 @@ private fun TermItem(
                 .fillMaxWidth()
                 .padding(topBottom = if (breakpoint >= Breakpoint.MD) 30.px else 18.px)
                 .cursor(Cursor.Pointer)
-                .onClick { expanded = !expanded }
+                .onClick { onClick() }
         ) {
             SpanText(
                 modifier = Modifier
@@ -170,7 +181,7 @@ private fun TermItem(
                 .borderRadius(50.percent)
                 .flexShrink(0)
                 .cursor(Cursor.Pointer)
-                .onClick { expanded = !expanded },
+                .onClick { onClick() },
             contentAlignment = Alignment.Center
         ) {
             Image(
