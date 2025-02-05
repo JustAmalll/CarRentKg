@@ -6,7 +6,7 @@ import car.rent.Constants.PHONE_NUMBER_FORMATTED
 import car.rent.components.SectionHeader
 import car.rent.navigation.Section
 import car.rent.styles.DefaultButtonStyle
-import car.rent.utils.onClicked
+
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextDecorationLine
@@ -24,6 +24,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.modifiers.letterSpacing
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textDecorationLine
 import com.varabyte.kobweb.silk.components.navigation.Link
@@ -85,7 +86,7 @@ fun ContactsSection() {
                 .fontWeight(FontWeight.Bold)
                 .fontSize(if (breakpoint >= Breakpoint.MD) 24.px else 16.px)
                 .letterSpacing(1.2.px)
-                .onClicked { window.location.href = "tel:$PHONE_NUMBER" },
+                .onClick { window.location.href = "tel:$PHONE_NUMBER" },
             contentAlignment = Alignment.Center
         ) {
             Text(value = "ПОЗВОНИТЕ НАМ")

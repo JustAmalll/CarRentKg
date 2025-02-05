@@ -8,7 +8,7 @@ import androidx.compose.runtime.setValue
 import car.rent.components.SectionHeader
 import car.rent.navigation.Section
 import car.rent.styles.DefaultButtonStyle
-import car.rent.utils.onClicked
+
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
@@ -27,6 +27,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.rotate
 import com.varabyte.kobweb.compose.ui.modifiers.size
@@ -140,7 +141,7 @@ private fun TermItem(
                 .fillMaxWidth()
                 .padding(topBottom = if (breakpoint >= Breakpoint.MD) 30.px else 18.px)
                 .cursor(Cursor.Pointer)
-                .onClicked { expanded = !expanded }
+                .onClick { expanded = !expanded }
         ) {
             SpanText(
                 modifier = Modifier
@@ -169,7 +170,7 @@ private fun TermItem(
                 .borderRadius(50.percent)
                 .flexShrink(0)
                 .cursor(Cursor.Pointer)
-                .onClicked { expanded = !expanded },
+                .onClick { expanded = !expanded },
             contentAlignment = Alignment.Center
         ) {
             Image(

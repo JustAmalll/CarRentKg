@@ -7,7 +7,7 @@ import car.rent.Constants.PHONE_NUMBER_FORMATTED
 import car.rent.components.CompanyLogo
 import car.rent.navigation.Section
 import car.rent.pages.MAX_PAGE_WIDTH
-import car.rent.utils.onClicked
+
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.TextDecorationLine
@@ -23,6 +23,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.fontWeight
 import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
+import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.opacity
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.textDecorationLine
@@ -136,7 +137,7 @@ fun FooterItem(
             .fontSize(18.px)
             .color(Color.white)
             .textDecorationLine(TextDecorationLine.None)
-            .onClicked { onClick() },
+            .onClick { onClick() },
         text = text,
         path = path ?: ""
     )

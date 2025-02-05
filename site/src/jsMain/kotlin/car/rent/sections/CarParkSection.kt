@@ -8,7 +8,7 @@ import androidx.compose.runtime.setValue
 import car.rent.components.SectionHeader
 import car.rent.navigation.Section
 import car.rent.pages.details.Car
-import car.rent.utils.onClicked
+import car.rent.pushEventToGTM
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.ObjectFit
@@ -38,6 +38,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.id
 import com.varabyte.kobweb.compose.ui.modifiers.lineHeight
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.objectFit
+import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.opacity
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.pointerEvents
@@ -63,6 +64,11 @@ enum class CarClass(val id: String, val text: String) {
 @Composable
 fun CarParkSection(onClick: (Car) -> Unit) {
     val breakpoint = rememberBreakpoint()
+    var selectedCarClass by remember { mutableStateOf(CarClass.CHEAP) }
+
+    val cars = remember(selectedCarClass) {
+        Car.entries.filter { it.carClass == selectedCarClass }
+    }
 
     Column(
         modifier = Modifier
@@ -70,11 +76,6 @@ fun CarParkSection(onClick: (Car) -> Unit) {
             .padding(top = 40.px)
             .id(Section.CarPark.id)
     ) {
-        var selectedCarClass by remember { mutableStateOf(CarClass.CHEAP) }
-
-        val cars = remember(selectedCarClass) {
-            Car.entries.filter { it.carClass == selectedCarClass }
-        }
 
         Column(
             modifier = Modifier.fillMaxWidth(),
@@ -107,64 +108,85 @@ fun CarParkSection(onClick: (Car) -> Unit) {
                 numColumns = numColumns(base = 1, md = 3)
             ) {
                 cars.forEach { car ->
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .id(car.id)
-                            .thenIf(
-                                condition = breakpoint >= Breakpoint.MD,
-                                other = Modifier.size(width = 360.px, height = 272.px)
-                            )
-                            .cursor(if (car.available) Cursor.Pointer else Cursor.NotAllowed)
-                            .onClicked { if (car.available) onClick(car) }
-                    ) {
-                        Image(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .objectFit(ObjectFit.Cover),
-                            src = car.images.first(),
-                            alt = "Аренда ${car.model} ${car.year} в Бишкеке от ${car.price}"
-                        )
-                        Box(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .backgroundImage(
-                                    linearGradient(
-                                        dir = LinearGradient.Direction.ToBottom,
-                                        from = rgba(0, 0, 0, 0.30),
-                                        to = rgba(0, 0, 0, 0.70)
-                                    )
-                                )
-                        )
-                        Column(
-                            modifier = Modifier
-                                .align(Alignment.BottomStart)
-                                .margin(left = 20.px, bottom = 40.px)
-                        ) {
-                            SpanText(
-                                text = car.model,
-                                modifier = Modifier
-                                    .fontSize(40.px)
-                                    .lineHeight(44.px)
-                                    .color(Color.white)
-                                    .fontWeight(FontWeight.Bold)
-                            )
-                            SpanText(
-                                text = if (car.available) {
-                                    "${car.price} сом"
-                                } else {
-                                    "Нет в наличии"
-                                },
-                                modifier = Modifier
-                                    .margin(top = 6.px)
-                                    .fontSize(20.px)
-                                    .color(Color.white)
-                                    .fontWeight(FontWeight.Bold)
-                            )
-                        }
-                    }
+                    CarItem(
+                        car = car,
+                        breakpoint = breakpoint,
+                        onClick = onClick
+                    )
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun CarItem(
+    car: Car,
+    breakpoint: Breakpoint,
+    onClick: (Car) -> Unit
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .id(car.id)
+            .thenIf(
+                condition = breakpoint >= Breakpoint.MD,
+                other = Modifier.size(width = 360.px, height = 272.px)
+            )
+            .cursor(if (car.available) Cursor.Pointer else Cursor.NotAllowed)
+            .onClick {
+                if (car.available) {
+                    pushEventToGTM(
+                        eventName = "car_card_click",
+                        params = mapOf("car" to car.id)
+                    )
+                    onClick(car)
+                }
+            }
+    ) {
+        Image(
+            modifier = Modifier
+                .fillMaxSize()
+                .objectFit(ObjectFit.Cover),
+            src = car.images.first(),
+            alt = "Аренда ${car.model} ${car.year} в Бишкеке от ${car.price}"
+        )
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .backgroundImage(
+                    linearGradient(
+                        dir = LinearGradient.Direction.ToBottom,
+                        from = rgba(0, 0, 0, 0.30),
+                        to = rgba(0, 0, 0, 0.70)
+                    )
+                )
+        )
+        Column(
+            modifier = Modifier
+                .align(Alignment.BottomStart)
+                .margin(left = 20.px, bottom = 40.px)
+        ) {
+            SpanText(
+                text = car.model,
+                modifier = Modifier
+                    .fontSize(40.px)
+                    .lineHeight(44.px)
+                    .color(Color.white)
+                    .fontWeight(FontWeight.Bold)
+            )
+            SpanText(
+                text = if (car.available) {
+                    "${car.price} сом"
+                } else {
+                    "Нет в наличии"
+                },
+                modifier = Modifier
+                    .margin(top = 6.px)
+                    .fontSize(20.px)
+                    .color(Color.white)
+                    .fontWeight(FontWeight.Bold)
+            )
         }
     }
 }
@@ -183,7 +205,7 @@ fun RowScope.CarClass(
             .id(id)
             .weight(1f)
             .cursor(Cursor.Pointer)
-            .onClicked { onClick() },
+            .onClick { onClick() },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         SpanText(

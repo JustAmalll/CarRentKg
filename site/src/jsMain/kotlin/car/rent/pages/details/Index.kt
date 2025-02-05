@@ -8,7 +8,6 @@ import androidx.compose.runtime.setValue
 import car.rent.Constants.PHONE_NUMBER
 import car.rent.sections.CarClass
 import car.rent.styles.DefaultButtonStyle
-import car.rent.utils.onClicked
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
 import com.varabyte.kobweb.compose.css.ObjectFit
@@ -32,6 +31,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.minWidth
 import com.varabyte.kobweb.compose.ui.modifiers.objectFit
+import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.overflow
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.position
@@ -260,7 +260,7 @@ fun CarDetailsPopup(car: Car, onClosePopupClicked: () -> Unit) {
             modifier = Modifier
                 .fillMaxSize()
                 .cursor(Cursor.Pointer)
-                .onClicked { onClosePopupClicked() }
+                .onClick { onClosePopupClicked() }
         )
         SimpleGrid(
             numColumns = numColumns(base = 1, md = 2),
@@ -283,7 +283,7 @@ fun CarDetailsPopup(car: Car, onClosePopupClicked: () -> Unit) {
                     .color(Color.white)
                     .rotate(45.deg)
                     .margin(all = 16.px)
-                    .onClicked { onClosePopupClicked() }
+                    .onClick { onClosePopupClicked() }
                     .align(Alignment.TopStart)
             )
         }
@@ -321,7 +321,7 @@ fun CarDetailedImage(
                         .size(40.px)
                         .borderRadius(50.percent)
                         .align(Alignment.CenterEnd)
-                        .onClicked { selectedCarImageIndex += 1 },
+                        .onClick { selectedCarImageIndex += 1 },
                     contentAlignment = Alignment.Center
                 ) {
                     FaArrowRight(modifier = Modifier.color(Color.white))
@@ -335,7 +335,7 @@ fun CarDetailedImage(
                         .size(40.px)
                         .borderRadius(50.percent)
                         .align(Alignment.CenterStart)
-                        .onClicked { selectedCarImageIndex -= 1 },
+                        .onClick { selectedCarImageIndex -= 1 },
                     contentAlignment = Alignment.Center
                 ) {
                     FaArrowLeft(modifier = Modifier.color(Color.white))
