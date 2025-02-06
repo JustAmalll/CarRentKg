@@ -98,7 +98,7 @@ fun FooterSection() {
             Column(modifier = Modifier.weight(1f)) {
                 Link(
                     modifier = Modifier
-                        .id("footer_call")
+                        .id("footer_phone_number")
                         .fontSize(36.px)
                         .color(Color.white)
                         .cursor(Cursor.Pointer)

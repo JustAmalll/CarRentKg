@@ -57,7 +57,7 @@ fun ContactsSection() {
         Link(
             text = PHONE_NUMBER_FORMATTED,
             modifier = Modifier
-                .id("contact")
+                .id("contact_us_phone_number")
                 .margin(top = 42.px)
                 .fontSize(if (breakpoint >= Breakpoint.MD) 90.px else 30.px)
                 .color(Color.white)
@@ -78,7 +78,7 @@ fun ContactsSection() {
         Box(
             modifier = DefaultButtonStyle
                 .toModifier()
-                .id("contact")
+                .id("btn_call_us")
                 .align(Alignment.CenterHorizontally)
                 .margin(top = if (breakpoint >= Breakpoint.MD) 100.px else 60.px)
                 .padding(leftRight = 8.percent, topBottom = 2.percent)

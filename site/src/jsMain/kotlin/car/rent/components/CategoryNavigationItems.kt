@@ -27,7 +27,7 @@ fun RowScope.CategoryNavigationItems(
                 .weight(1f)
                 .thenIf(
                     condition = category == Section.PhoneNumber,
-                    other = Modifier.id("contact")
+                    other = Modifier.id("header_phone_number")
                 )
                 .thenIf(
                     condition = vertical,
