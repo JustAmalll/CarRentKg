@@ -12,6 +12,7 @@ import car.rent.styles.DefaultButtonStyle
 
 import com.varabyte.kobweb.compose.css.Cursor
 import com.varabyte.kobweb.compose.css.FontWeight
+import com.varabyte.kobweb.compose.css.UserSelect
 import com.varabyte.kobweb.compose.foundation.layout.Arrangement
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
@@ -32,6 +33,7 @@ import com.varabyte.kobweb.compose.ui.modifiers.onClick
 import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.rotate
 import com.varabyte.kobweb.compose.ui.modifiers.size
+import com.varabyte.kobweb.compose.ui.modifiers.userSelect
 import com.varabyte.kobweb.silk.components.graphics.Image
 import com.varabyte.kobweb.silk.components.layout.HorizontalDivider
 import com.varabyte.kobweb.silk.components.text.SpanText
@@ -154,6 +156,7 @@ private fun TermItem(
                 .fillMaxWidth()
                 .padding(topBottom = if (breakpoint >= Breakpoint.MD) 30.px else 18.px)
                 .cursor(Cursor.Pointer)
+                .userSelect(UserSelect.None)
                 .onClick { onClick() }
         ) {
             SpanText(

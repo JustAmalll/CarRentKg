@@ -97,7 +97,7 @@ fun Item(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            modifier = Modifier.size(if (breakpoint >= Breakpoint.MD) 150.px else 130.px),
+            modifier = Modifier.size(if (breakpoint >= Breakpoint.MD) 150.px else 100.px),
             src = "/about_company_icons/$icon"
         )
         SpanText(

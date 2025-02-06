@@ -54,8 +54,8 @@ fun SectionHeader(
         ) {
             SpanText(
                 modifier = Modifier
-                    .fontSize(if (breakpoint >= Breakpoint.MD) 82.px else 60.px)
-                    .lineHeight(if (breakpoint >= Breakpoint.MD) 82.px else 52.px)
+                    .fontSize(if (breakpoint >= Breakpoint.MD) 82.px else 56.px)
+                    .lineHeight(if (breakpoint >= Breakpoint.MD) 82.px else 50.px)
                     .fontWeight(FontWeight.Medium)
                     .color(Color.white),
                 text = title
@@ -66,7 +66,7 @@ fun SectionHeader(
             ) {
                 Box(
                     modifier = Modifier
-                        .height(if (breakpoint >= Breakpoint.MD) 60.px else 40.px)
+                        .height(if (breakpoint >= Breakpoint.MD) 60.px else 36.px)
                         .width(if (breakpoint >= Breakpoint.MD) 6.px else 4.px)
                         .backgroundColor(Color("#484848"))
                         .borderRadius(6.px)
@@ -74,8 +74,8 @@ fun SectionHeader(
                 SpanText(
                     modifier = Modifier
                         .margin(left = 10.px)
-                        .fontSize(if (breakpoint >= Breakpoint.MD) 34.px else 24.px)
-                        .lineHeight(if (breakpoint >= Breakpoint.MD) 36.px else 26.px)
+                        .fontSize(if (breakpoint >= Breakpoint.MD) 34.px else 22.px)
+                        .lineHeight(if (breakpoint >= Breakpoint.MD) 36.px else 24.px)
                         .color(Color.white),
                     text = subtitle
                 )
